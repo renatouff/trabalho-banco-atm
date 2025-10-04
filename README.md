@@ -67,9 +67,10 @@ Antes de começar, baixe e instale os seguintes softwares:
 
 ### 4. Executando a Aplicação
 1. Clique com o botão direito no projeto no `Project Explorer`.
-2. Vá em `Run As > Run on Server`.
-3. Selecione o servidor GlassFish que você configurou e clique em `Finish`.
-4. A página de login da aplicação deve abrir no navegador.
+2. Vá em `Properties > Web Project Settings` e altere o **Context root** para `banco-atm`.
+3. Em seguida, vá em `Run As > Run on Server`.
+4. Selecione o servidor GlassFish que você configurou e clique em `Finish`.
+5. A página de login da aplicação deve abrir no navegador.
 
 ## Credenciais de Teste
 - **Login de Gerente:**
