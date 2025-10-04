@@ -24,6 +24,7 @@ nbproject/private/
 .project
 .classpath
 .settings/
+!.settings/org.eclipse.wst.common.component
 
 # Ignorar arquivos de banco de dados locais (se não forem versionados intencionalmente)
 *.mv.db
