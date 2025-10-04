@@ -42,6 +42,22 @@
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
             <version>3.0.0</version> <!-- Implementação da JSTL necessária para GlassFish -->
         </dependency>
+        
+        <!-- Dependência do JUnit 5, para escrever e rodar testes unitários em Java -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+
+		<!-- Dependência do Mockito, para a criação de 'mocks' e para isolar as dependências nos testes unitários. -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>5.5.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
