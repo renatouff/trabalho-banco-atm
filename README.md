@@ -1,6 +1,20 @@
-# Projeto Banco ATM - Grupo: Tela Azul do Windows
+# Projeto Banco ATM
 
 Este projeto é uma aplicação web que simula as funcionalidades básicas de um caixa eletrônico (ATM), permitindo a gestão de contas de clientes e oferecendo um painel administrativo para um gerente. A aplicação foi construída utilizando a arquitetura MVC (Model-View-Controller) com Java Servlets e JSP, e agora está sendo utilizada para estudos na disciplina de Qualidade e Teste de Software.
+
+---
+
+## 📚 Documentação do Projeto e Artefatos
+
+Todos os documentos e artefatos de teste gerados para o projeto estão disponíveis nos links abaixo:
+
+* **Plano de Teste:** [Link](https://docs.google.com/document/d/1gZI48qXrKt-7Ol-iNRwgWNd4ShzFlkxM/)
+* **Planilha de Casos de Teste (Manuais e Unitários):** [Link](https://docs.google.com/spreadsheets/d/1hIZYAHNf7_Ws7WwVpP2s7LdwW3uqgnCW/)
+* **Pasta de Evidências (Screenshots e Logs):** [Link](https://drive.google.com/drive/folders/1dq5cM1rdKQ8Lkx3HSO6in07fJbf6mxd-)
+* **Apresentação PPTX (Entrega 1):** [Link](https://docs.google.com/presentation/d/1cnJ-3ldlAAhiPNQFaiI9VJ19VoUX42sp/)
+* **Instruções Oficiais do Trabalho (PDF):** [Link](https://drive.google.com/file/d/1asPzZwBfM402AyEZvFZAvglsvrh3qpSK/)
+
+---
 
 ## Tecnologias Utilizadas
 - **Backend:** Java 11, Servlets, JSP, JSTL (Jakarta EE 10)
@@ -22,13 +36,13 @@ Antes de começar, baixe e instale os seguintes softwares:
    * Necessário JDK 11 ou superior. O JDK 17 é uma versão LTS estável e recomendada.
    * **Link:** [JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 
-* **MySQL Server 8.x:**
+* **MySQL Server 8.4.5:**
    * Durante a instalação, defina uma senha para o usuário `root` e anote-a.
-   * **Link:** [MySQL Community Downloads](https://dev.mysql.com/downloads/mysql/)
+   * **Link:** [MySQL Community Downloads](https://downloads.mysql.com/archives/community/)
 
-* **MySQL Workbench 8.0.x:**
+* **MySQL Workbench 8.0.42:**
    * Ferramenta para gerenciar o banco de dados.
-   * **Link:** [MySQL Workbench Download](https://dev.mysql.com/downloads/workbench/)
+   * **Link:** [MySQL Workbench Download](https://downloads.mysql.com/archives/workbench/)
 
 * **Eclipse IDE for Enterprise Java and Web Developers:**
    * **Link:** [Eclipse Downloads](https://www.eclipse.org/downloads/packages/release/2025-09/r/eclipse-ide-enterprise-java-and-web-developers)
@@ -41,13 +55,14 @@ Antes de começar, baixe e instale os seguintes softwares:
 1. Abra o **MySQL Workbench** e conecte-se ao seu servidor local usando o usuário `root`.
 2. Abra uma nova aba de script e execute os seguintes comandos para criar o banco de dados e o usuário da aplicação:
 
-    CREATE DATABASE banco_atm;
-    CREATE USER 'grupo'@'localhost' IDENTIFIED BY '123';
-    GRANT ALL PRIVILEGES ON banco_atm.* TO 'grupo'@'localhost';
-    FLUSH PRIVILEGES;
+    ```sql
+	CREATE DATABASE banco_atm;
+	CREATE USER 'grupo'@'localhost' IDENTIFIED BY '123';
+	GRANT ALL PRIVILEGES ON banco_atm.* TO 'grupo'@'localhost';
+	FLUSH PRIVILEGES;
 
 ### 3. Configurando o Projeto no Eclipse
-1. **Clone o Repositório:** `git clone https://github.com/.git`
+1. **Clone o Repositório:** `git clone https://github.com/renatouff/trabalho-banco-atm.git`
 2. **Importe o Projeto no Eclipse:**
     * Vá em `File > Import...` > `Maven > Existing Maven Projects`.
     * Aponte para a pasta do projeto (a que contém o `pom.xml`) e finalize a importação.
@@ -77,9 +92,14 @@ Antes de começar, baixe e instale os seguintes softwares:
     - **CPF:** `00000000000`
     - **Senha:** `admin`
 
-## Autores
-- [Nome do Membro 1]
-- [Nome do Membro 2]
-- [Nome do Membro 3]
-- [Nome do Membro 4]
-- [Nome do Membro 5]
+---
+
+## 🧑‍💻 Autores
+
+**Grupo:** Tela Azul do Windows
+
+* Felipe Lopes
+* Israel Bousquet
+* Marcos Rodrigues
+* Renato Luiz
+* Rodrigo Dias
