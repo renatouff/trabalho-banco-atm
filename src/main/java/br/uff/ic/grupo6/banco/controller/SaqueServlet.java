@@ -12,24 +12,25 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.net.URLEncoder; // Importar para codificar mensagens de erro na URL
-import java.nio.charset.StandardCharsets; // Importar para especificar o charset
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class SaqueServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Cliente clienteLogado = (Cliente) session.getAttribute("usuarioLogado");
+        
+        
+        Object usuarioLogadoObj = session.getAttribute("usuarioLogado");
 
-        if (clienteLogado == null || !(clienteLogado instanceof Cliente)) {
-            // Usar URLEncoder para codificar a mensagem de erro na URL
+        if (usuarioLogadoObj == null || !(usuarioLogadoObj instanceof Cliente)) {
             String errorMessage = URLEncoder.encode("Acesso não autorizado. Faça login como cliente.", StandardCharsets.UTF_8);
             response.sendRedirect("login.jsp?erro=" + errorMessage);
             return;
         }
 
-        // Garante que a codificação dos caracteres seja UTF-8 para evitar problemas com acentuação
+        Cliente clienteLogado = (Cliente) usuarioLogadoObj;
         request.setCharacterEncoding("UTF-8");
 
         String valorStr = request.getParameter("valor");
@@ -40,6 +41,20 @@ public class SaqueServlet extends HttpServlet {
 
             if (valorSaque <= 0) {
                 String errorMessage = URLEncoder.encode("O valor do saque deve ser positivo.", StandardCharsets.UTF_8);
+                response.sendRedirect("saque.jsp?erro=" + errorMessage);
+                return;
+            }
+
+            
+            if (valorSaque > 2000) {
+                String errorMessage = URLEncoder.encode("O valor do saque excede o limite de R$ 2.000,00 por transação.", StandardCharsets.UTF_8);
+                response.sendRedirect("saque.jsp?erro=" + errorMessage);
+                return;
+            }
+
+           
+            if (valorSaque % 10 != 0) {
+                String errorMessage = URLEncoder.encode("O valor do saque deve ser em múltiplos de R$ 10,00.", StandardCharsets.UTF_8);
                 response.sendRedirect("saque.jsp?erro=" + errorMessage);
                 return;
             }
@@ -58,15 +73,12 @@ public class SaqueServlet extends HttpServlet {
             }
 
             ContaDAO contaDAO = new ContaDAO();
-            Transacao transacaoSaque = contaDAO.realizarSaque(contaCliente.getId(), valorSaque);
+            // Assumindo que o ID da conta é Long, mas o DAO espera int. O cast é necessário.
+            Transacao transacaoSaque = contaDAO.realizarSaque((int) contaCliente.getId(), valorSaque);
 
-            // Atualiza o saldo do objeto Conta na sessão do cliente
-            contaCliente.sacar(valorSaque); // Utiliza o método sacar da classe Conta para atualizar o saldo do objeto
-            // Não precisa re-setar o cliente na sessão se você já pegou a referência direta ao objeto 'conta' e 'clienteLogado'
+            contaCliente.sacar(valorSaque); 
 
             request.setAttribute("comprovante", transacaoSaque);
-            // request.setAttribute("cliente", clienteLogado); // O cliente já está na sessão, não precisa passar novamente
-
             request.getRequestDispatcher("comprovanteSaque.jsp").forward(request, response);
 
         } catch (NumberFormatException e) {

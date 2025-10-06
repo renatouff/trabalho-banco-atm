@@ -72,6 +72,10 @@ public class Conta {
     public double getSaldo() {
         return saldo;
     }
+    
+    public void setSaldo(double valor) {
+    	this.saldo = valor;
+    }
 
     // O saldo não tem "set" público para evitar que seja alterado externamente
     // Ele só pode ser modificado através de saques e depósitos
