@@ -17,6 +17,8 @@ Todos os documentos e artefatos de teste gerados para o projeto estão disponív
 ---
 
 ## Tecnologias Utilizadas
+
+- **Frontend:** Bootstrap 5 (v5.3.3)
 - **Backend:** Java 11, Servlets, JSP, JSTL (Jakarta EE 10)
 - **Banco de Dados:** MySQL Server 8.x
 - **Build Tool:** Apache Maven
